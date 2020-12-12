@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Created by pdf2htmlEX (https://github.com/coolwanglu/pdf2htmlex) -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="pdf2htmlEX"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<style type="text/css">
+body{
+			background: #000;
+  width: 100%;
+  height: 100%;
+		}
+		
+		#sidebar {
+				        margin-left: 25%;
+				margin-right: 25%;
+				width: auto;
+				heigth: 100%;
+		}
+		
+		#test {
+			width: 100%;
+			height: 100%;
+		}
+		
+		path {
+		  stroke-dasharray: 5000;
+		  stroke-dashoffset: 5000;
+		  animation: dash 15s linear forwards;
+		}
+
+		@keyframes dash {
+		  to {
+			stroke-dashoffset: 0;
+		  }
+		}
+		</style>
+<title></title>
+  <script src="jquery-1.12.4.js"></script>
+  <script src="jquery-ui.js"></script>
+<script src="svg.js"></script>
+<script src="svg.min.js"></script>
+<script src="snap.svg.js"></script>
+
+<script>
+//viewBox="0 0 1592 765"
+//enable-background="new 0 0 792 612"
+
+//$(window).on('load', function() {
+	var index = 1;
+	
+	function scaleAnimation(p, cx, cy, speed){
+	
+		//p.attr({ transform: "r0 " + cx + " " + cy + " s" + i + "," + i + "," + cx + "," + cy }); //Reset + Scale setup
+		p.animate(
+			{ transform: "r360," + cx + "," + cy + " s" + index + "," + index + "," + cx + "," + cy }, // Basic rotation around a point. No frills.
+			speed, // Nice slow turning rays
+			function(){
+				index = ( index == 7 ) ? 1 : ( index + 1 );
+				scaleAnimation(p, cx, cy, speed); // Repeat this animation so it appears infinite.
+			}
+		);
+	}
+	
+	function triggerAnimate() 
+	{
+		var path = Snap("#test path");
+		var bbox = path.getBBox(); 
+		scaleAnimation(path, bbox.cx, bbox.cy, 1000);
+	}
+//});
+
+</script>
+</head>
+<body>
+<div id="sidebar">
+
+<svg id="test" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1592 765" enable-background="new 0 0 792 612" xml:space="preserve"><g><path stroke-dasharray="4" fill="#000000" stroke="#ffffff" stroke-miterlimit="10" d="M309,249.5c-5.25,1-12.5,3.5-15.25,3.5s-7.667,0.417-9.667,1   c-1.828,0.533-3.333,1.75-6.083,2.5s-17.25,1.25-23.5,1.5s-15.5,2.167-20.167,3.5S217.167,264.833,212,266s-12.5,3.167-17,3.5   s-29.958,1.164-35.333,0.667c-5.417-0.5-26.556-0.449-31.667,0.667c-4.583,1-7.917,1.774-7.917,7.75c0,3,4.75,4.917,8.917,6.917   s21.5,4.334,24,5.667s4,3.333,4.333,7.167s4,6.667,7.833,8.333s9.167,0.833,11.833-1.5c2.667-2.333,3-6.333,6-8.5s6.5-3.5,10.5-3.5   s22.167,0.333,26.333,0.167s16,2,21,2.5s16.833-3.167,23-5.667s9.667-4.167,14-4.167s40.5,0.5,47.167,1s38.667,4.667,46.5,5   s26.5-1.167,33.5,1s12.167,13,13.667,22.5s-0.334,39.001-0.667,45.167s-0.667,17.332-2,22.666s-4.333,15-5,19.5   s-0.167,11.999-0.167,14.666s-0.166,4.167-0.833,6.667s-6.334,15.667-7.167,18.167s-2.334,10.166-2,18.166   s0.334,18.167-0.333,22.667s0.5,14.332-1,17.499s-4.5,7.166-6.833,10.666S389,519.165,390,526.998s6.834,11.5,8.167,18.333   s0.832,13.667,2.166,17.167s7.166,9,9.5,9.833s7.5,0.999,11.667-0.167s5.5-3.332,4.5-9.166s-3.5-6.668-5.5-10.834   s-5.833-10.999-5.833-16.666s-2.168-14.668-0.334-22.834S423.5,488,425,484s8.25-24,9.75-28.75s4-17.25,4.25-23.75   s1.25-16,3.25-21.5s12.252-25.646,14.5-30.5c2.156-4.656,8.25-24,10-31S479,301.417,480,293.667s6.75-15.167,3.25-43.417   s-7.5-28.5-5.25-38.25s3.75-18.25,3.75-24s3.084-15.75,4.417-22c0.834-3.912,4.132-9.963,5.083-11.344   c0.969-1.406,2.25-3.406,6.5-3.906s16,0.25,20.5,0.75s16.75,2.25,20.5,3.25s10.5,3.75,13.75,4s12.5-1.25,18-1.5s13.5-2,19.25-2   s12.25-1.25,15.5,0s8,3,10.5,4.5s7.25,1,11.25,0s5.75-1.75,11-2s7.5-1,8-2.25s-4-2.25-10.5-2.75s-2.666-0.833-14.666-2.083   S605.75,143.25,597,141s-16-4.25-20-6s-10.75-2.75-18.25-2.5s-15,1.25-21-0.25S518,127.75,511,124s-10-8.25-18.25-9.25   s-16-1.75-18.25-2s-10.5,0.25-15-3.25s-7.75-14.25-7.5-17.75s1.75-16.5,2.5-17.25s1.5,1.5,2.5,0.25s0.75-4.5,1-6.75   s2.25-6.5,2.25-8.25S459,54.75,457,55s0.75-7.25-1.5-15.25s-9.459-16.518-16.75-17.5C429.938,21.062,420.5,23.375,416,30   c-3.395,4.998-3.75,10-4.25,16.25s0.75,11,0.75,12.25s-1.25-0.75-1.75,1.5s-0.5,5.25,1,8.5s1,5.75,2,7.5s1.75-1.25,3,0.75   s1.25,3.5,2.75,5.75s2.5,11.5,1.5,15s-2,18-20.75,19.5s-32.5,6.25-41.25,11s-29,7.75-37,7.25s-20-2.5-32.75,0.75s-24.5,7.75-35.5,9   s-23,0.25-32.25-1s-18.383-3.296-22.75-3c-2.458,0.167-3.401-0.024-8.125,2c-0.583,0.25-9.125,3.375-4.5,5.125s29.478,4.123,29,9   c-0.625,6.375-9.625,7.5-10.375,10.625s2.375,3.625,6.875,1.875s11.25-4.375,13.875-5.125s7.25-4.5,12.375-4.75   s20.75,0,28.125,0.25s34.25,1.75,42,1.625s10.625-3.375,16.375-3.75s31,0.75,37.625-0.125s12.25-4.875,20.875-3.375   S399.584,171,401.334,176.5s3.083,15.125,2.333,22.5s1.5,11.75-1.333,17.333s-8.25,16.167-12.667,19.333S376.5,236.5,366.75,238.25   s-24,2.25-32,3.75S309,249.5,309,249.5z"/></g><text x="0" y="627" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Ryan Peterson</text><text x="0" y="632" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>
+
+</div>
+</body>
+</html>
